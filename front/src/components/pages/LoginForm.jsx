@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import useAuth from "../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 
 export default function LoginForm() {
@@ -16,7 +16,7 @@ export default function LoginForm() {
 
   const hdlSubmit = async (e) => {
     e.preventDefault();
-    // console.log(input)
+    console.log(input)
     try {
       // validation
       const rs = await axios.post("http://localhost:8889/auth/login", input);

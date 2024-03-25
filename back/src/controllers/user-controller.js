@@ -1,5 +1,4 @@
-// user.service.js
-const prisma = require('../models/db')
+const prisma = require("../models/db");
 
 // Create a new user
 const createUser = async (data) => {
@@ -12,7 +11,7 @@ const createUser = async (data) => {
 const getAllUsers = async () => {
   return prisma.customer.findMany({
     where: {
-      userType: 'CUSTOMER',
+      userType: "CUSTOMER",
     },
   });
 };
@@ -21,7 +20,7 @@ const getAllUsers = async () => {
 const getAllAdmins = async () => {
   return prisma.customer.findMany({
     where: {
-      userType: 'ADMIN',
+      userType: "ADMIN",
     },
   });
 };
@@ -31,7 +30,7 @@ const getUserById = async (id) => {
   return prisma.customer.findUnique({
     where: {
       id,
-    }
+    },
   });
 };
 
@@ -40,7 +39,7 @@ const getUserByUsername = async (username) => {
   return await prisma.customer.findUnique({
     where: {
       username,
-    }
+    },
   });
 };
 
@@ -48,9 +47,9 @@ const getUserByUsername = async (username) => {
 const updateUserById = async (id, data) => {
   return prisma.customer.update({
     where: {
-      id
+      id,
     },
-    data
+    data,
   });
 };
 
@@ -70,5 +69,5 @@ module.exports = {
   updateUserById,
   deleteUserById,
   getUserByUsername,
-  getAllAdmins
+  getAllAdmins,
 };

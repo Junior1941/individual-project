@@ -1,26 +1,41 @@
-@import url('https://fonts.googleapis.com/css2?family=Krub:wght@200;400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Krub:wght@200;400;500&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 .Font {
-    FONT-FAMILY: emoji;
+  font-family: 'emoji';
 }
 
 .Font1 {
-    font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: 'Georgia', "Times New Roman", Times, serif;
 }
 
-.Font-position{
-    margin: -10px;
-    font-size: small;
-    text-align: right;
-} 
+.FontP {
+    font-family: 'sans-serif'; 
+}
+
+.Font-position {
+  margin: -10px;
+  font-size: small;
+  text-align: right;
+}
 
 .mt {
-    margin-top: 80px;
+  margin-top: 80px;
 }
-.mt Register{
-    margin-top: 80px;
+
+.mt.Register {
+  margin-top: 80px;
+}
+
+.container {
+  max-width: 100%;
+  transition: all 0.3s ease; 
+}
+
+.your-div-class {
+  width: 250px;
+  height: 30px;
 }

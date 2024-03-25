@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import TodoCard from "../components/TodoCard";
-import ModalEdit from "../components/ModalEdit";
+import TodoCard from "../navbar/TodoCard";
+import ModalEdit from "../navbar/ModalEdit";
 
 export default function UserHome() {
   const [todos, setTodos] = useState([]);

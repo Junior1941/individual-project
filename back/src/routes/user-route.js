@@ -1,15 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const customerService = require("../services/customer.service");
+const userController = require("../controllers/user-controller");
 const authenticate = require("../middlewares/authenticate");
 
 const mapUserType = (userTypeString) => {
     const userTypeMap = {
-        user: "USER",
+        user: "CUSTOMER",
         admin: "ADMIN"
     }
 
-    return userTypeMap(userTypeString) || "USER"
+    return userTypeMap(userTypeString) || "CUSTOMER"
 }
 
 // Create a new user
@@ -18,7 +18,7 @@ router.post("/users", async (req, res) => {
         const userTypeEnum = mapUserType(data.userType);
         const body_data = req.body;
         body_data.userType = userTypeEnum;
-        const newUser = await customerService.createUser(body_data);
+        const newUser = await userController.createUser(body_data);
         res.json(newUser);
     } catch (error) {
         res.status(500).json({ error: "Error Creating User"});
@@ -28,7 +28,7 @@ router.post("/users", async (req, res) => {
 // Get all users
 router.get("/users", async (req, res) => {
     try {
-        const users = await customerService.getAllusers();
+        const users = await userController.getAllusers();
         res.json(users);
     } catch (error) {
         res.status(500).json({ error:"Error Getting Users"});
@@ -38,7 +38,7 @@ router.get("/users", async (req, res) => {
 // Get add admins
 router.get("/admins", async (req, res) => {
     try {
-        const users = await customerService.getAllAdmins();
+        const users = await userController.getAllAdmins();
         res.json(users);
     } catch (error) {
         res.status(500).json({ error: "Error getting Admins"})
@@ -50,7 +50,7 @@ router.get("/:id", async (req, res) => {
     const userId = parseInt(req.params.id);
   
     try {
-      const user = await customerService.getUserById(userId);
+      const user = await userController.getUserById(userId);
   
       if (!user) {
         res.status(404).json({ error: "User not found" });
@@ -68,7 +68,7 @@ router.get("/:id", async (req, res) => {
     // console.log(req.body)
   
     try {
-      const updatedUser = await customerService.updateUserById(req.body.id, req.body);
+      const updatedUser = await userController.updateUserById(req.body.id, req.body);
   
       if (!updatedUser) {
         res.status(404).json({ error: "User not found" });
@@ -86,7 +86,7 @@ router.get("/:id", async (req, res) => {
     const userId = parseInt(req.params.id, 10);
   
     try {
-      const deletedUser = await customerService.deleteUserById(userId);
+      const deletedUser = await userController.deleteUserById(userId);
   
       if (!deletedUser) {
         res.status(404).json({ error: "User not found" });
